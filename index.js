@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-const { argv } = require('yargs');
 let appInsights = require('applicationinsights');
 const fs = require('fs');
 const moment = require('moment');
@@ -22,8 +20,7 @@ const client = appInsights.defaultClient;
 
 const file = `${process.env.APPCENTER_OUTPUT_DIRECTORY}/${process.env.APP_FILE}`;
 const fileStats = fs.statSync(file);
-const { startTime } = argv;
-const duration = moment().diff(moment(parseInt(startTime)), 'seconds');
+const duration = moment().diff(moment(parseInt(process.env.APPCENTER_BUILD_ID)), 'seconds');
 const platform = process.env.APPCENTER_ANDROID_VARIANT ? 'android' : 'ios';
 console.log(
   '-----------------------------------------------------------------------------------------------',
