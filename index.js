@@ -21,16 +21,17 @@ const client = appInsights.defaultClient;
 const file = `${process.env.APPCENTER_OUTPUT_DIRECTORY}/${process.env.APP_FILE}`;
 const fileStats = fs.statSync(file);
 const duration = moment().diff(moment(parseInt(process.env.AC_START_TIME)), 'seconds');
+const platform = process.env.APPCENTER_ANDROID_VARIANT ? 'android' : 'ios';
 console.log(fileStats);
 client.trackEvent({
   name: 'build',
   properties: {
     duration,
     size: fileStats.size,
-    platform: process.env.PLATFORM,
+    platform,
     buildNumber: process.env.APPCENTER_BUILD_ID,
     branch: process.env.APPCENTER_BRANCH,
   },
 });
 
-client.trackMetric({ name: `${process.env.PLATFORM} build time`, value: duration });
+client.trackMetric({ name: `${platform} build time`, value: duration });
