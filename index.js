@@ -22,6 +22,10 @@ const file = `${process.env.APPCENTER_OUTPUT_DIRECTORY}/${process.env.APP_FILE}`
 const fileStats = fs.statSync(file);
 const duration = moment().diff(moment(parseInt(process.env.AC_START_TIME)), 'seconds');
 const platform = process.env.APPCENTER_ANDROID_VARIANT ? 'android' : 'ios';
+console.log(process.env);
+console.log(
+  '-----------------------------------------------------------------------------------------------',
+);
 console.log(fileStats);
 client.trackEvent({
   name: 'build',
