@@ -1,0 +1,23 @@
+{
+  "name": "app-insights-node-cli",
+  "version": "1.0.0",
+  "description": "send app insights metrics via node cli app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "fix": "eslint . --fix",
+    "pretty": "prettier --write \"./**/*.{js,jsx,json,ts}\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "applicationinsights": "^1.8.2",
+    "dotenv": "^8.2.0",
+    "moment": "^2.27.0"
+  },
+  "devDependencies": {
+    "@react-native-community/eslint-config": "^2.0.0",
+    "eslint": "^7.4.0"
+  }
+}
