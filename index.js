@@ -21,7 +21,7 @@ const client = appInsights.defaultClient;
 const file = `${process.env.APPCENTER_OUTPUT_DIRECTORY}/${process.env.APP_FILE}`;
 const fileStats = fs.statSync(file);
 const duration = moment().diff(moment(parseInt(process.env.AC_START_TIME)), 'seconds');
-
+console.log(fileStats);
 client.trackEvent({
   name: 'build',
   properties: {
