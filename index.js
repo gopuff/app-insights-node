@@ -35,7 +35,10 @@ client.trackEvent({
     platform,
     buildNumber: process.env.APPCENTER_BUILD_ID,
     branch: process.env.APPCENTER_BRANCH,
+    status: process.env.AGENT_JOBSTATUS,
   },
 });
 
-client.trackMetric({ name: `${platform} build time`, value: duration });
+client.trackMetric({ name: `${platform}BuildTime`, value: duration });
+client.trackMetric({ name: `${platform}BuildStatus`, value: process.env.AGENT_JOBSTATUS });
+client.trackMetric({ name: `${platform}BuildSize`, value: fileStats.size });
