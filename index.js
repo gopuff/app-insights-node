@@ -19,7 +19,17 @@ appInsights
 const client = appInsights.defaultClient;
 
 const file = `${process.env.APPCENTER_OUTPUT_DIRECTORY}/${process.env.APP_FILE}`;
-const fileStats = fs.statSync(file);
+
+let fileStats = {};
+
+try {
+  if (fs.existsSync(file)) {
+    fileStats = fs.statSync(file);
+  }
+} catch (err) {
+  console.error(err);
+}
+
 const platform = process.env.APPCENTER_ANDROID_VARIANT ? 'android' : 'ios';
 const duration = moment().diff(moment.unix(parseInt(process.env.APPCENTER_BUILD_ID)), 'seconds');
 client.trackEvent({
