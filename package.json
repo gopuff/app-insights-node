@@ -14,7 +14,7 @@
   "dependencies": {
     "applicationinsights": "^1.8.2",
     "dotenv": "^8.2.0",
-    "moment": "^2.27.0"
+    "moment": "^2.29.4"
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "^2.0.0",
